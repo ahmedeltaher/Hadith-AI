@@ -1,7 +1,11 @@
 # Arabic Hadith RAG Pipeline
 
 A comprehensive Retrieval-Augmented Generation (RAG) system specialized for Arabic Hadith texts, built with LlamaIndex, Ollama, and Qdrant vector store.
+<div align="center">
 
+![صلى الله عليه وسلم](صلى_الله_عليه_وسلم.svg.png)
+
+</div>
 ## 🌟 Features
 
 - **Arabic Hadith Processing**: Specialized pipeline for Arabic religious texts
