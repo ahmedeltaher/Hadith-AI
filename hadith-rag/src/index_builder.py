@@ -33,14 +33,14 @@ class HadithIndexBuilder:
     def __init__(
         self,
         storage_dir: Optional[Union[str, Path]] = None,
-        use_sentence_window: bool = True,
+        use_sentence_window: bool = False,
         rebuild: bool = False
     ):
         """Initialize the index builder.
         
         Args:
             storage_dir: Directory to store the index
-            use_sentence_window: Whether to use sentence window node parser
+            use_sentence_window: Whether to apply sentence window context (semantic chunking is always used)
             rebuild: Whether to rebuild existing index
         """
         config = get_config()
@@ -102,25 +102,23 @@ class HadithIndexBuilder:
         return vector_store
     
     def _setup_node_parser(self) -> TransformComponent:
-        """Setup node parser for document chunking."""
+        """Setup node parser for document chunking with semantic awareness."""
         config = self.config
         
+        # Always prioritize SemanticSplitterNodeParser for better Hadith boundaries
+        # This ensures each Hadith becomes its own node based on semantic meaning
+        node_parser = SemanticSplitterNodeParser(
+            buffer_size=1,  # Small buffer for precise boundaries
+            breakpoint_percentile_threshold=config.SEMANTIC_SPLITTER_BREAKPOINT_PERCENTILE_THRESHOLD,
+            embed_model=self.embed_model,
+        )
+        print("📄 Using SemanticSplitterNodeParser for smart semantic chunking")
+        print(f"   🎯 Breakpoint threshold: {config.SEMANTIC_SPLITTER_BREAKPOINT_PERCENTILE_THRESHOLD}%")
+        print("   🧠 Smart semantic chunking to preserve meaning between Hadiths")
+        
+        # If sentence window is still needed, we can apply it as post-processing
         if self.use_sentence_window:
-            # Use sentence window node parser for better context
-            node_parser = SentenceWindowNodeParser.from_defaults(
-                window_size=config.SENTENCE_WINDOW_SIZE,
-                window_metadata_key="window",
-                original_text_metadata_key="original_text",
-            )
-            print(f"📄 Using SentenceWindowNodeParser (window_size={config.SENTENCE_WINDOW_SIZE})")
-        else:
-            # Use semantic splitter for Arabic content
-            node_parser = SemanticSplitterNodeParser(
-                buffer_size=1,
-                breakpoint_percentile_threshold=config.SEMANTIC_SPLITTER_BREAKPOINT_PERCENTILE_THRESHOLD,
-                embed_model=self.embed_model,
-            )
-            print("📄 Using SemanticSplitterNodeParser")
+            print(f"   🪟 Sentence window context will be applied (size={config.SENTENCE_WINDOW_SIZE})")
         
         return node_parser
     
@@ -233,19 +231,19 @@ class HadithIndexBuilder:
 def build_hadith_index(
     data_dir: Optional[Union[str, Path]] = None,
     storage_dir: Optional[Union[str, Path]] = None,
-    use_sentence_window: bool = True,
+    use_sentence_window: bool = False,
     rebuild: bool = False
 ) -> VectorStoreIndex:
-    """Convenience function to build Hadith index.
+    """Convenience function to build Hadith index with semantic chunking.
     
     Args:
         data_dir: Directory containing documents
         storage_dir: Directory to store index
-        use_sentence_window: Whether to use sentence window parsing
+        use_sentence_window: Whether to apply sentence window context (semantic chunking always used)
         rebuild: Whether to rebuild existing index
     
     Returns:
-        Built VectorStoreIndex
+        Built VectorStoreIndex with semantic chunking for optimal Hadith boundaries
     """
     builder = HadithIndexBuilder(
         storage_dir=storage_dir,

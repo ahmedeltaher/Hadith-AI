@@ -74,16 +74,16 @@ class HadithQueryEngine:
     def _get_or_build_index(self) -> VectorStoreIndex:
         """Get existing index or build new one."""
         try:
-            # Try to load existing index
+            # Try to load existing index with semantic chunking
             builder = HadithIndexBuilder(
                 storage_dir=self.config.STORAGE_DIR,
-                use_sentence_window=True,
+                use_sentence_window=False,  # Semantic chunking prioritized
                 rebuild=False
             )
             return builder.build_index()
         except Exception as e:
             print(f"⚠️  Could not load existing index: {e}")
-            print("🔨 Building new index...")
+            print("🔨 Building new index with semantic chunking...")
             return build_hadith_index()
     
     def _setup_retriever(self) -> VectorIndexRetriever:

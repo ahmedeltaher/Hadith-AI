@@ -34,7 +34,7 @@ class RAGConfig(BaseSettings):
     # Chunking settings
     CHUNK_SIZE: int = 512
     CHUNK_OVERLAP: int = 50
-    SEMANTIC_SPLITTER_BREAKPOINT_PERCENTILE_THRESHOLD: int = 95
+    SEMANTIC_SPLITTER_BREAKPOINT_PERCENTILE_THRESHOLD: int = 90  # More sensitive for Hadith boundaries
     
     # Retrieval settings
     SIMILARITY_TOP_K: int = 5

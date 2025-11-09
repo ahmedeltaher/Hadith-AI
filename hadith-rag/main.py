@@ -102,12 +102,12 @@ def print_query_result(result: Dict[str, Any]):
 @app.command()
 def interactive(
     rebuild: bool = typer.Option(False, "--rebuild", help="Rebuild the index from scratch"),
-    no_window: bool = typer.Option(False, "--no-window", help="Disable sentence window context"),
+    no_semantic: bool = typer.Option(False, "--no-semantic", help="Disable semantic chunking (use simple chunking)"),
     top_k: int = typer.Option(5, "--top-k", help="Number of documents to retrieve"),
     data_dir: Optional[str] = typer.Option(None, "--data-dir", help="Directory containing Hadith documents"),
     storage_dir: Optional[str] = typer.Option(None, "--storage-dir", help="Directory to store index"),
 ):
-    """Start interactive query session."""
+    """Start interactive query session with semantic chunking for optimal Hadith boundaries."""
     print_banner()
     
     config = get_config()
@@ -121,7 +121,7 @@ def interactive(
     console.print(f"📁 Data Directory: {config.DATA_DIR}")
     console.print(f"💾 Storage Directory: {config.STORAGE_DIR}")
     console.print(f"🔧 Rebuild Index: {rebuild}")
-    console.print(f"🪟 Sentence Window: {not no_window}")
+    console.print(f"� Semantic Chunking: {not no_semantic}")
     console.print(f"🔍 Top-K Retrieval: {top_k}")
     console.print()
     
@@ -134,11 +134,11 @@ def interactive(
             # Initialize components
             task = progress.add_task("Initializing Hadith RAG Pipeline...", total=None)
             
-            # Build/load index
-            progress.update(task, description="Building/loading document index...")
+            # Build/load index with semantic chunking
+            progress.update(task, description="Building/loading document index with semantic chunking...")
             builder = HadithIndexBuilder(
                 storage_dir=config.STORAGE_DIR,
-                use_sentence_window=not no_window,
+                use_sentence_window=False,  # Always use semantic chunking for better Hadith boundaries
                 rebuild=rebuild
             )
             index = builder.build_index(data_dir=config.DATA_DIR)
@@ -186,7 +186,7 @@ def interactive(
                         "Embedding Model": config.EMBEDDING_MODEL,
                         "Ollama URL": config.OLLAMA_BASE_URL,
                         "Top-K Retrieval": top_k,
-                        "Sentence Window": not no_window,
+                        "Semantic Chunking": not no_semantic,
                         "Collection Name": config.QDRANT_COLLECTION_NAME,
                     }
                     print_stats(config_dict, "Current Configuration")
@@ -245,9 +245,9 @@ def build_index(
     data_dir: Optional[str] = typer.Option(None, "--data-dir", help="Directory containing documents"),
     storage_dir: Optional[str] = typer.Option(None, "--storage-dir", help="Directory to store index"),
     rebuild: bool = typer.Option(False, "--rebuild", help="Rebuild existing index"),
-    no_window: bool = typer.Option(False, "--no-window", help="Disable sentence window context"),
+    no_semantic: bool = typer.Option(False, "--no-semantic", help="Disable semantic chunking"),
 ):
-    """Build or rebuild the document index."""
+    """Build or rebuild the document index with semantic chunking for optimal Hadith boundaries."""
     console.print("🔨 Building Hadith document index...")
     
     config = get_config()
@@ -270,10 +270,10 @@ def build_index(
         doc_stats = loader.get_document_stats(documents)
         print_stats(doc_stats, "Document Statistics")
         
-        # Build index
+        # Build index with semantic chunking
         builder = HadithIndexBuilder(
             storage_dir=config.STORAGE_DIR,
-            use_sentence_window=not no_window,
+            use_sentence_window=False,  # Always use semantic chunking for better Hadith boundaries
             rebuild=rebuild
         )
         
