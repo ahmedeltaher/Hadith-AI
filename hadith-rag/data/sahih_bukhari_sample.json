@@ -1,0 +1,51 @@
+{
+  "collection": "sahih_bukhari",
+  "book": "book_of_faith",
+  "hadiths": [
+    {
+      "number": 1,
+      "text": "عن عمر بن الخطاب رضي الله عنه قال: سمعت رسول الله صلى الله عليه وسلم يقول: إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى، فمن كانت هجرته إلى الله ورسوله فهجرته إلى الله ورسوله، ومن كانت هجرته لدنيا يصيبها أو امرأة ينكحها فهجرته إلى ما هاجر إليه",
+      "english": "Actions are but by intention and every man shall have but that which he intended. Thus he whose migration was for Allah and His messenger, his migration was for Allah and His messenger, and he whose migration was to achieve some worldly benefit or to take some woman in marriage, his migration was for that for which he migrated.",
+      "narrator": "Umar ibn al-Khattab",
+      "grade": "Sahih",
+      "book_number": 1,
+      "chapter": "How the Divine Inspiration started"
+    },
+    {
+      "number": 2,
+      "text": "عن عائشة أم المؤمنين رضي الله عنها قالت: قال رسول الله صلى الله عليه وسلم: من أحدث في أمرنا هذا ما ليس منه فهو رد",
+      "english": "Whoever introduces something in this matter of ours [Islam] that does not belong to it, it is rejected.",
+      "narrator": "Aisha",
+      "grade": "Sahih", 
+      "book_number": 2,
+      "chapter": "How the Divine Inspiration started"
+    },
+    {
+      "number": 3,
+      "text": "عن أبي هريرة رضي الله عنه أن رسول الله صلى الله عليه وسلم قال: المسلم من سلم المسلمون من لسانه ويده، والمهاجر من هجر ما نهى الله عنه",
+      "english": "The Muslim is the one from whose tongue and hand the Muslims are safe, and the muhajir (emigrant) is the one who abandons what Allah has forbidden.",
+      "narrator": "Abu Huraira",
+      "grade": "Sahih",
+      "book_number": 3,
+      "chapter": "Faith"
+    },
+    {
+      "number": 4,
+      "text": "عن عبد الله بن عمرو رضي الله عنهما أن النبي صلى الله عليه وسلم قال: أربع من كن فيه كان منافقاً خالصاً، ومن كانت فيه خصلة منهن كانت فيه خصلة من النفاق حتى يدعها: إذا اؤتمن خان، وإذا حدث كذب، وإذا عاهد غدر، وإذا خاصم فجر",
+      "english": "Four characteristics whoever possesses them is a pure hypocrite, and whoever possesses one of them has a characteristic of hypocrisy until he gives it up: when he is entrusted he betrays, when he speaks he lies, when he makes a covenant he breaks it, and when he disputes he transgresses.",
+      "narrator": "Abdullah ibn Amr",
+      "grade": "Sahih",
+      "book_number": 4,
+      "chapter": "Faith"
+    },
+    {
+      "number": 5,
+      "text": "عن أبي عبد الرحمن عبد الله بن مسعود رضي الله عنه قال: حدثنا رسول الله صلى الله عليه وسلم وهو الصادق المصدوق: إن أحدكم يجمع خلقه في بطن أمه أربعين يوماً نطفة، ثم يكون علقة مثل ذلك، ثم يكون مضغة مثل ذلك، ثم يرسل إليه الملك فينفخ فيه الروح ويؤمر بأربع كلمات: بكتب رزقه وأجله وعمله وشقي أو سعيد",
+      "english": "Each of you is constituted in your mother's womb for forty days as a nutfah (drop), then it becomes an alaqah (clot) for an equal period, then a mudghah (chewed lump) for another equal period, then the angel is sent to breathe the soul into it, and he is commanded with four matters: to write down his sustenance, his lifespan, his actions, and whether he will be wretched or blessed.",
+      "narrator": "Abdullah ibn Masud",
+      "grade": "Sahih",
+      "book_number": 5,
+      "chapter": "Predestination"
+    }
+  ]
+}

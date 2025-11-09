@@ -1,0 +1,35 @@
+# Core RAG dependencies
+llama-index>=0.11.0
+llama-index-llms-ollama
+llama-index-embeddings-ollama
+llama-index-vector-stores-qdrant
+
+# Vector store and search
+qdrant-client>=1.7.0
+
+# OpenAI for fallback/comparison
+openai>=1.0.0
+
+# Document processing
+pypdf2
+python-docx
+beautifulsoup4
+markdownify
+
+# Web framework (optional)
+fastapi
+uvicorn
+
+# Utilities
+python-dotenv
+pydantic>=2.0.0
+pydantic-settings
+typer
+rich
+tqdm
+pyyaml
+
+# Development
+pytest
+black
+flake8
