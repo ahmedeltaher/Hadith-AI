@@ -1,4 +1,6 @@
 # Arabic Hadith RAG Pipeline
+Hadith RAG is an AI-powered retrieval and reasoning engine designed for Islamic text understanding — specifically Hadith corpora like Sahih Bukhari, Sahih Muslim, and others.
+It leverages semantic chunking, Arabic embeddings, and LLM reasoning to answer complex questions accurately, while preserving the sacred context and meaning of the Hadith.
 
 A comprehensive Retrieval-Augmented Generation (RAG) system specialized for Arabic Hadith texts, built with LlamaIndex, Ollama, and Qdrant vector store.
 <div align="center">
@@ -6,7 +8,8 @@ A comprehensive Retrieval-Augmented Generation (RAG) system specialized for Arab
 ![صلى الله عليه وسلم](صلى_الله_عليه_وسلم.svg.png)
 
 </div>
-## 🌟 Features
+
+🌟 Features
 
 - **Arabic Hadith Processing**: Specialized pipeline for Arabic religious texts
 - **Modern RAG Architecture**: LlamaIndex + Ollama + Qdrant integration
